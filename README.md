@@ -43,6 +43,10 @@ This implementation It's using setTimeout, in other words, it's using the event 
 
 TODO: Implement other strategy to avoid stress the timer queue in the event loop.
 
+## Implementation
+ 
+See code in ``` /lib ``` directory
+
 ## Development
 
 ### Install dependencies
