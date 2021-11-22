@@ -1,7 +1,8 @@
-#Cache in memory.
+# Cache in memory.
 
-##How to use?
+## How to use?
 
+```
 import Cache from "./lib";
 
 interface Book {
@@ -29,46 +30,66 @@ cache.flush();
 // get Stats about cache
 cache.fetchStats; // it only returns amount of items in cache
 
-##Memory Size
+```
+## Memory Size
 
-In this implementation has simple approach to avoid memory leak. The memory is limited by a number of items in memory.
+This implementation has simple approach to avoid memory leak. The memory is limited by a number of items in memory.
 
 TODO: Implement a memory by memory size (i.e: 2GB)
 
-##Expiration Strategy
+## Expiration Strategy
 
-In this implementation It's using setTimeout, so it's using the event loop (timer callback queue) to execute when delete the item. So in this case that the client use this library and have a high use of the timer API, it could be a problem and probably should use another strategy.
+This implementation It's using setTimeout, in other words, it's using the event loop (timer callback queue) to execute the expiration of the item. In the  case that the client use this library and have a high use of the timer API, it might be a problem and probably should be necessary use other strategy.
 
-TODO: Implement another strategy to avoid stress the timer queue in the event loop.
+TODO: Implement other strategy to avoid stress the timer queue in the event loop.
 
-##Development
+## Development
 
-How to run test?
+### Install dependencies
 
-npm run test
+```npm i```
 
-#API.
+### How to run test?
+
+```npm run test```
+
+# API.
 
 Here there is an example with a Book API.
 
-How to run?
+### Install dependencies
 
-npm i
+```npm i```
 
-npm run start
 
-##Endpoints
+### How to run locally?
 
-Add book
+```npm run test```
 
-Get book
+## Endpoints
 
-Remove book
+### Add book
 
-##Architecture code
+curl --location --request POST 'localhost:3000/books' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "Algoritm",
+    "author": "Martni",
+    "ttl": 500
+}'
 
-This project use hexagonal architecture. [More info](https://alistair.cockburn.us/hexagonal-architecture/).
-In this case cache repository is using the library mentioned above.
+### Get book
+
+```curl --location --request GET 'localhost:3000/books/:id'```
+
+### Remove book
+
+```curl --location --request DELETE 'localhost:3000/books/78fd6250-7b9e-4a2b-9157-15128d1c6e14'```
+
+# Architecture code
+
+This project uses hexagonal architecture. [More info](https://alistair.cockburn.us/hexagonal-architecture/).
+In this case, cache repository is using the library mentioned above.
 
 ## Scaffolding
 
@@ -79,3 +100,7 @@ In this case cache repository is using the library mentioned above.
 - handler (external actors to know how to interact with the core)
 - repository (external actors that implements the functions that core understand
 - lib (code to open to use by external applications)
+
+## TODO:
+- Add test
+- Add observability
