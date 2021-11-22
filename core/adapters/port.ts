@@ -1,0 +1,7 @@
+import { Book } from "../domains";
+
+export interface BookPort {
+  add(name: string, author: string, ttl?: number): Book;
+  remove(id: string);
+  fetch(id: string): Book;
+}
