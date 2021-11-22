@@ -70,13 +70,13 @@ Here there is an example with a Book API.
 
 ### Add book
 
-curl --location --request POST 'localhost:3000/books' \
+```curl --location --request POST 'localhost:3000/books' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "name": "Algoritm",
     "author": "Martni",
-    "ttl": 500
-}'
+    "ttl": 500 // in seconds
+}'```
 
 ### Get book
 
