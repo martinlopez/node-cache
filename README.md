@@ -90,7 +90,7 @@ curl --location --request POST 'localhost:3000/books' \
 
 ### Remove book
 
-```curl --location --request DELETE 'localhost:3000/books/78fd6250-7b9e-4a2b-9157-15128d1c6e14'```
+```curl --location --request DELETE 'localhost:3000/books/:id'```
 
 # Architecture code
 
