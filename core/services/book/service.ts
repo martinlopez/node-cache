@@ -1,7 +1,7 @@
-import { BookRepository } from "../../adapters";
+import { BookPort, BookRepository } from "../../adapters";
 import { Book } from "../../domains";
 
-export class BookService {
+export class BookService implements BookPort {
   repository: BookRepository;
 
   constructor(repository: BookRepository) {

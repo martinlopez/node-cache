@@ -12,7 +12,7 @@ export interface Options {
   maxItems?: number;
 }
 
-export default class BookRepository {
+export default class BookRepository implements BookRepository {
   cache: Cache<Book>;
   constructor(options?: Options) {
     this.cache = new Cache<Book>({

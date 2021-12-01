@@ -4,8 +4,8 @@ import { Book } from "../../core/domains";
 interface BookBody {
   name: string;
   author: string;
-  ttl: number;
 }
+
 export class BookHandler {
   service: BookPort;
   constructor(bookService: BookPort) {
@@ -18,13 +18,13 @@ export class BookHandler {
     if (!item) {
       res.status(404).send("Not found");
     }
-    res.send(JSON.stringify(item));
+    res.send(item);
   };
 
   post = (req, res) => {
     const book = req.body;
-    const item = this.service.add(book.name, book.author, book.ttl);
-    res.send(JSON.stringify(item));
+    const item = this.service.add(book.name, book.author);
+    res.send(201, item);
   };
 
   delete = (req, res) => {
